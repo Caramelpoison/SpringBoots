@@ -1,7 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <title>Author List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .actions .edit {
+      background-color: #4CAF50;
+    }
+
+    .actions .delete {
+      background-color: #f44336;
+    }
+
+    .create-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+
+    .create-link:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
 <h2>Author List</h2>
@@ -15,11 +78,13 @@
     <td th:text="${author.id}"></td>
     <td th:text="${author.name}"></td>
     <td>
-      <a th:href="@{/authors/update/{id}(id=${author.id})}">Edit</a>
-      <a th:href="@{/authors/delete/{id}(id=${author.id})}">Delete</a>
+      <div class="actions">
+        <a class="edit" th:href="@{/authors/update/{id}(id=${author.id})}">Edit</a>
+        <a class="delete" th:href="@{/authors/delete/{id}(id=${author.id})}">Delete</a>
+      </div>
     </td>
   </tr>
 </table>
-<a href="/authors/create">Create New Author</a>
+<a class="create-link" href="/authors/create">Create New Author</a>
 </body>
 </html>
